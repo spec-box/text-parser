@@ -1,0 +1,13 @@
+# Dependencies
+node_modules
+
+# Build
+lib
+*.tgz
+
+# debug
+npm-debug.*
+
+# macOS
+.DS_Store
+*.pem
