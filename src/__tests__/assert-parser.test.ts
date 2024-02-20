@@ -27,6 +27,12 @@ describe('assert-parser', () => {
     ]);
   });
 
+  test('не должен возвращать отсылки внутри выделений', () => {
+    const result = parse('`Lorem $ipsum-com` dolor');
+
+    expect(result.meta.references).toHaveLength(0);
+  });
+
   test('должен возвращать все ссылки', () => {
     const result = parse(
       'Lorem https://ipsum.com?dolor http://sit-amet.com?retpath=https://consectetur.com adipisicing elit.',
@@ -36,5 +42,17 @@ describe('assert-parser', () => {
       { raw: 'https://ipsum.com?dolor', value: undefined },
       { raw: 'http://sit-amet.com?retpath=https://consectetur.com', value: undefined },
     ]);
+  });
+
+  test('не должен возвращать ссылки без протокола', () => {
+    const result = parse('Lorem.ipsum.dolor sit amet consectetur adipisicing elit.');
+
+    expect(result.meta.urls).toHaveLength(0);
+  });
+
+  test('не должен возвращать ссылки внутри выделений', () => {
+    const result = parse('`Lorem https://ipsum.com` dolor');
+
+    expect(result.meta.urls).toHaveLength(0);
   });
 });
