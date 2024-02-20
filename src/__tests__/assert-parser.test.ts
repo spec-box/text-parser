@@ -27,6 +27,12 @@ describe('assert-parser', () => {
     ]);
   });
 
+  test('не должен возвращать отсылки внутри выделений', () => {
+    const result = parse('`Lorem $ipsum-com` dolor');
+
+    expect(result.meta.references).toHaveLength(0);
+  });
+
   test('должен возвращать все ссылки', () => {
     const result = parse(
       'Lorem https://ipsum.com?dolor http://sit-amet.com?retpath=https://consectetur.com adipisicing elit.',
