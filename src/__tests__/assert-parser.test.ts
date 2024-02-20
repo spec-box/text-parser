@@ -37,4 +37,10 @@ describe('assert-parser', () => {
       { raw: 'http://sit-amet.com?retpath=https://consectetur.com', value: undefined },
     ]);
   });
+
+  test('не должен возвращать ссылки без протокола', () => {
+    const result = parse('Lorem.ipsum.dolor sit amet consectetur adipisicing elit.');
+
+    expect(result.meta.urls).toHaveLength(0);
+  });
 });
