@@ -5,13 +5,15 @@ export interface ParsedValue {
   value: string | undefined;
 }
 
+export interface ParseMeta {
+  highlights: ParsedValue[];
+  references: ParsedValue[];
+  urls: ParsedValue[];
+}
+
 export interface ParseResult {
   assert: string;
-  meta: {
-    highlights: ParsedValue[];
-    references: ParsedValue[];
-    urls: ParsedValue[];
-  };
+  meta: ParseMeta;
 }
 
 /**
