@@ -43,4 +43,10 @@ describe('assert-parser', () => {
 
     expect(result.meta.urls).toHaveLength(0);
   });
+
+  test('не должен возвращать ссылки внутри выделений', () => {
+    const result = parse('`Lorem https://ipsum.com` dolor');
+
+    expect(result.meta.urls).toHaveLength(0);
+  });
 });
