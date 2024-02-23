@@ -39,8 +39,11 @@ describe('assert-parser', () => {
     );
 
     expect(result.meta.urls).toEqual([
-      { raw: 'https://ipsum.com?dolor', value: undefined },
-      { raw: 'http://sit-amet.com?retpath=https://consectetur.com', value: undefined },
+      { raw: 'https://ipsum.com?dolor', value: 'https://ipsum.com?dolor' },
+      {
+        raw: 'http://sit-amet.com?retpath=https://consectetur.com',
+        value: 'http://sit-amet.com?retpath=https://consectetur.com',
+      },
     ]);
   });
 
