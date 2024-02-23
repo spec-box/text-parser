@@ -1,12 +1,12 @@
 import { describe, expect, test } from '@jest/globals';
 
-import { parse } from '../assert-parser';
+import { parse } from '../text-parser';
 
-describe('assert-parser', () => {
+describe('text-parser', () => {
   test('должен возвращать оригинальный текст', () => {
     const result = parse('Lorem ipsum dolor sit amet consectetur adipisicing elit.');
 
-    expect(result.assert).toBe('Lorem ipsum dolor sit amet consectetur adipisicing elit.');
+    expect(result.text).toBe('Lorem ipsum dolor sit amet consectetur adipisicing elit.');
   });
 
   test('должен возвращать все выделения', () => {

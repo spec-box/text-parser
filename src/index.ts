@@ -1,1 +1,1 @@
-export { parse, type ParsedValue, type ParseResult, type ParseMeta } from './assert-parser';
+export { parse, type ParsedValue, type ParseResult, type ParseMeta } from './text-parser';
