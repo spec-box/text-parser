@@ -2,7 +2,7 @@ import { rules } from './assert-rules';
 
 export interface ParsedValue {
   raw: string;
-  value: string | undefined;
+  value: string;
 }
 
 export interface ParseMeta {
@@ -37,8 +37,10 @@ export function parse(assert: string) {
 function extract(regex: RegExp, values: ParsedValue[]) {
   return (value: string) => {
     for (const match of value.matchAll(regex)) {
-      values.push({ raw: match.at(0) as string, value: match.at(1) });
-      value = value.replace(match.at(0) as string, '');
+      const raw = match.at(0) as string;
+
+      values.push({ raw, value: match.at(1) ?? raw });
+      value = value.replace(raw, '');
     }
 
     return value;
