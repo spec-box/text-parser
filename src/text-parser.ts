@@ -1,4 +1,4 @@
-import { rules } from './assert-rules';
+import { rules } from './text-rules';
 
 export interface ParsedValue {
   raw: string;
@@ -12,16 +12,16 @@ export interface ParseMeta {
 }
 
 export interface ParseResult {
-  assert: string;
+  text: string;
   meta: ParseMeta;
 }
 
 /**
- * Parses assert string and return information about content.
+ * Parses text and return information about content.
  */
-export function parse(assert: string) {
+export function parse(text: string) {
   const result: ParseResult = {
-    assert,
+    text,
     meta: { highlights: [], references: [], urls: [] },
   };
 
@@ -29,7 +29,7 @@ export function parse(assert: string) {
     extract(rules.highlight, result.meta.highlights),
     extract(rules.reference, result.meta.references),
     extract(rules.url, result.meta.urls),
-  )(assert);
+  )(text);
 
   return result;
 }
