@@ -1,6 +1,6 @@
 {
   "name": "@spec-box/text-parser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publishConfig": {
     "access": "public"
   },
@@ -15,7 +15,9 @@
   "homepage": "https://github.com/spec-box/text-parser#readme",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
-  "files": ["./lib"],
+  "files": [
+    "./lib"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "prebuild": "rm -rf lib",
