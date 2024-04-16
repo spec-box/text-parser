@@ -27,6 +27,21 @@ describe('text-parser', () => {
     ]);
   });
 
+  test('не должен включать точку в ссылку', () => {
+    const result = parse('Lorem $ipsum. Dolor $sit-amet. consectetur adipisicing elit.');
+
+    expect(result.meta.references).toEqual([
+      { raw: '$ipsum', value: 'ipsum' },
+      { raw: '$sit-amet', value: 'sit-amet' },
+    ]);
+  });
+
+  test('не должен возвращать ссылку, которая начинается не на букву', () => {
+    const result = parse('Lorem $9ipsum. Dolor $-sit-amet. consectetur adipisicing elit.');
+
+    expect(result.meta.references).toEqual([]);
+  });
+
   test('не должен возвращать отсылки внутри выделений', () => {
     const result = parse('`Lorem $ipsum-com` dolor');
 
